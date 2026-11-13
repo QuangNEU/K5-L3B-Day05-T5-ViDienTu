@@ -136,9 +136,21 @@ Thêm:
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
 ## §5. Prototype  (chặng 5)
-- Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
-- 1–2 ảnh có đánh số; mỗi số: thể hiện gì · nguyên tắc HAX/PAIR nào · mức tự chủ nào.
-- Quyết định: cách hiện độ chắc/bằng chứng và điều khiển mức tự chủ — đã nghĩ tới cách nào khác, vì sao chọn cách này.
+
+- **Chạy ứng dụng:** xem [prototype/README.md](prototype/README.md). Điền API key DeepSeek vào `.env` cục bộ, chạy `python server.py` trong thư mục `prototype`, mở `http://127.0.0.1:8765`. Giao diện HTML/CSS/JavaScript và máy chủ Python do Codex tạo; không cần đăng nhập. API key chỉ ở máy chủ, không được đưa vào code nộp hoặc giao diện.
+- **Phần thật và phần mô phỏng:** DeepSeek đọc tin nhắn tự do và lịch sử để trả lời thật, đồng thời đề xuất function call; không còn nút chọn tình huống. Tất cả tool ví là giả định: máy chủ chỉ trả kết quả mô phỏng để giao diện hiện thông báo. Không giữ/nhả tiền, không khoá ví, không xác minh thật và không gửi thông báo tới nhân viên. Nội dung chat được gửi tới DeepSeek, vì vậy chỉ dùng dữ liệu dựng. Phiên chat nằm trong bộ nhớ máy chủ, không ghi vào file.
+- **Các mức tự chủ nhìn thấy được:** `giu_giao_dich`, `chuyen_tu_van_vien` và `yeu_cau_xac_minh` tự tạo thông báo. Thẻ xác thực có link mở màn hình khuôn mặt/OTP; khi bấm, ứng dụng phát thông báo tool con tương ứng. `khoa_vi` chờ chuyên viên chống gian lận, không có nút khách tự duyệt. `nha_giao_dich` bị chặn tại máy chủ và không được cung cấp cho model.
+- **Demo 4 phút:** nhập yêu cầu hỗ trợ rồi sửa thông tin ở lượt sau để thử ngữ cảnh; nhập lời tự nhận là kỹ thuật viên yêu cầu nhả tiền để thử từ chối/chuyển hỗ trợ. Dùng OTP/mật khẩu giả của bài lab để kiểm tra che dữ liệu, nút “Tiếp tục xác thực khuôn mặt” → màn hình bảo mật → thông báo `gui_man_hinh_khuon_mat`. Bấm “Đến Trung tâm hỗ trợ” → “Chuyển yêu cầu hỗ trợ” để thấy thông báo `chuyen_tu_van_vien`. Không dùng dữ liệu thật. Đường bảo vệ dữ liệu và nút hỗ trợ chạy cục bộ kể cả khi thiếu API key; chat tự do khác dùng DeepSeek.
+- **Ảnh và nguyên tắc:** khi chụp 1–2 ảnh demo, đánh số ① vào nhãn AI / Tool mô phỏng (**G1**); ② vào lý do và trạng thái tool (**G11**); ③ vào nút tiếp tục xác thực / Trung tâm hỗ trợ (**G10**).
+- **Quyết định hiển thị:** dùng giải thích và trạng thái xử lý thay cho phần trăm độ chắc chưa được kiểm chứng. Thông báo có tên tool, lý do, trạng thái; các link chỉ đến màn hình nội bộ do ứng dụng kiểm soát, không dùng URL model tự bịa. Đã loại cho model/khách tự truyền cờ “đã duyệt” để khoá ví hoặc nhả tiền. Màn hình xác thực nói rõ mô phỏng, không đánh đồng với xác minh danh tính thật.
+
+**Ảnh 1 — Kết quả mô phỏng xác thực:** tên tool và giới hạn ở thẻ kết quả thể hiện **G11**; link Trung tâm hỗ trợ thể hiện đường lui **G10**. Không có danh tính nào đã được xác minh thật.
+
+![Ảnh 1 kết quả xác thực mô phỏng](prototype/screenshots/verification.jpg)
+
+**Ảnh 2 — Chuyển đến Trung tâm hỗ trợ:** nút chuyển yêu cầu và mã thông báo thể hiện **G10/G11**. Hai ảnh được chụp từ phiên thử không có API key; không chuyển dữ liệu thử sang DeepSeek.
+
+![Ảnh 2 thông báo chuyển hỗ trợ](prototype/screenshots/support.jpg)
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
 - 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
