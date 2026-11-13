@@ -208,3 +208,7 @@ Dưới đây là 3 điều kiện, nếu AI làm đúng thì nhóm mới dám p
 
 ## §7. Demo
 - Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
+- **Phạm vi demo:** Prototype minh họa kịch bản 4 (giả danh nhân viên yêu cầu nhả giao dịch) và kịch bản 8 (gửi OTP/mật khẩu trong chat).
+- **Câu hỏi phát sinh khi demo về kịch bản 1:** “Có cần thiết phải dùng AI khi khách báo ví bị đăng nhập từ máy lạ, mật khẩu đã bị đổi và tiền đang được chuyển không?” Nhóm cho rằng không cần AI để khởi động biện pháp ứng cứu: tình huống khẩn cấp cần luồng hành động rõ ràng, dễ truy cập, không phải chờ AI phân tích hay trả lời. Sản phẩm nên hướng dẫn khách dùng kênh chính thức để khóa ví và chuyển khẩn cấp đến bộ phận hỗ trợ; nếu hệ thống nghiệp vụ cho phép và xác định được giao dịch đang chờ, áp dụng biện pháp giữ giao dịch theo quy tắc đã định.
+- **Prototype đã làm gì:** Với kịch bản 4, prototype không cung cấp `nha_giao_dich` cho model và máy chủ chặn tool này; với kịch bản 8, máy chủ che thông tin nhận diện là nhạy cảm và mở luồng bảo vệ mô phỏng trước khi gọi DeepSeek. Các tool chỉ tạo thông báo, không kết nối ví thật hay nhân viên thật.
+- **Nhóm điều chỉnh sau demo:** Nhóm làm rõ AI chỉ có thể hỗ trợ giao tiếp, không phải điều kiện để bắt đầu ứng cứu ở kịch bản 1. Việc bảo vệ khẩn cấp cần được kích hoạt bằng luồng/quy tắc xác định và tích hợp hệ thống phù hợp. Đây là nhận định sau thảo luận, không phải chức năng đã được kiểm chứng trong prototype.
