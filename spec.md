@@ -12,6 +12,9 @@
 ## §1. Lát cắt & phạm vi
 - Trong Chat với ví (giống Chat với MoMo), khi người dùng ví đang lo lắng nhắn hỏi vì một giao dịch bị giữ, bị giục chuyển tiền gấp, hoặc thấy tiền bị trừ lạ, AI tự trả lời và hướng dẫn thao tác, hỏi lại cho rõ, hay chuyển tư vấn viên, để tiền không đi sai chỗ, mà khách thật đang gấp không bị bỏ lơ.
 - 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.
+  1. **KHÔNG tự động nhả giao dịch (`nha_giao_dich`) dưới bất kỳ hình thức nào:** Vì hành động này làm thay đổi dòng tiền thật và không thể đảo ngược, nếu AI bị lừa (thao túng tâm lý hoặc Prompt Injection) sẽ trực tiếp gây mất tài sản của khách hàng.
+  2. **KHÔNG yêu cầu, tiếp nhận nhập hộ hay lặp lại mã OTP/mật khẩu trong khung chat:** Vì việc lưu trữ dữ liệu nhạy cảm dưới dạng chữ thô (plaintext) vi phạm nghiêm trọng tiêu chuẩn bảo mật và tạo kẽ hở cho kẻ gian chiếm ví nếu xem được lịch sử chat.
+  3. **KHÔNG cam kết thời gian hoàn tiền hay hứa đảo ngược các giao dịch đã báo thành công:** Vì trợ lý AI không có quyền truy cập vào hệ thống đối soát lõi của ngân hàng, việc tự ý hứa hẹn sẽ tạo ra ảo giác (hallucination), gây rắc rối pháp lý và khủng hoảng niềm tin.
 
 ## §2. Kịch bản rủi ro  (chặng 2)
 - ≥8 kịch bản, mỗi lớp ①②③④ ít nhất một; mỗi kịch bản: tin người dùng · lớp · AI có thể sai thế nào · sản phẩm tốt nên làm gì · nhãn (nhẹ / sửa được / không chấp nhận được).
@@ -134,8 +137,6 @@ Thêm:
 - Thử mức đã đặt trên 2 kịch bản đắt nhất + 1 kịch bản bình thường: cái sai có bị chặn không? còn việc nào làm khi lẽ ra phải hỏi? người dùng bình thường có phải chờ vô ích không?
 - Luật thêm hoặc tool tách bước (nếu có), và vì sao.
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
-## §4. Mức tự chủ  (chặng 4)
-
 ### 1. Phân định mức tự chủ
 
 Các mức dưới đây áp dụng cho thiết kế sản phẩm. Trong prototype, mọi tool chỉ phát thông báo; chưa có nhân viên, dữ liệu thiết bị hay thao tác ví thật.
