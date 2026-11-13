@@ -6,7 +6,7 @@
 |---|---|---|
 | Nguyễn Minh Quang | 2A202603791 |  |
 | Nguyễn Đình Nam |  |  |
-| Nguyễn Nhật Minh |  |  |
+| Nguyễn Nhật Minh | 2A202603745 | Tổng hợp 11 kịch bản rủi ro và phân tích lựa chọn ưu tiên; xây dựng chatbot MEME tích hợp DeepSeek; kiểm thử, chụp ảnh minh họa và hoàn thiện tài liệu prototype. |
 
 
 ## §1. Lát cắt & phạm vi
