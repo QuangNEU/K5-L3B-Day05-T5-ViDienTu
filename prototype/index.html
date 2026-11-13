@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>MEME — Trợ lý của bạn</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="MEME"><span class="brand-icon">M</span> MEME<span class="brand-dot">.</span></a>
+    <button id="new-chat" class="new-chat"><span>＋</span> Cuộc trò chuyện mới</button>
+    <div class="nav-label">KHÔNG GIAN CỦA BẠN</div>
+    <div class="nav-item active"><span>◌</span> Trợ lý ví <span class="pill">AI</span></div>
+    <button id="activity-toggle" class="nav-item"><span>♧</span> Hoạt động & thông báo <span id="activity-count">0</span></button>
+    <button id="support-nav" class="nav-item"><span>♡</span> Trung tâm hỗ trợ</button>
+    <div class="sidebar-bottom"><div class="privacy-icon">◇</div><strong>Bạn luôn giữ quyền quyết định</strong><p>Trợ lý không cần OTP hay mật khẩu của bạn. Không chia sẻ các thông tin này trong chat.</p><div class="profile"><span class="profile-avatar">M</span><div>Khách trải nghiệm<small>Không kết nối ví thật</small></div></div></div>
+  </aside>
+  <main class="workspace">
+    <header class="header"><div><h1>Trợ lý ví <span class="pill">AI</span></h1><p><span id="connection-dot" class="connection-dot"></span><span id="connection">Đang kết nối…</span></p></div><div class="header-actions"><button id="support-header" class="support-button">Trung tâm hỗ trợ</button><span class="demo-tag">Tool mô phỏng</span><button id="new-chat-mobile" class="icon-button mobile-only" aria-label="Cuộc trò chuyện mới">＋</button><button id="bell" class="icon-button" aria-label="Mở thông báo">♧<span id="unread" class="unread" hidden></span></button></div></header>
+    <div id="setup" class="setup" role="status" hidden></div>
+    <section id="chat" class="chat" aria-label="Cuộc trò chuyện" aria-live="polite" aria-relevant="additions">
+      <div id="welcome" class="welcome"><div class="welcome-icon">M<span>✧</span></div><div class="eyebrow">TRỢ LÝ AI CỦA BẠN</div><h2>Mình có thể giúp gì<br>cho bạn hôm nay?</h2><p>Hỏi về giao dịch, yêu cầu hỗ trợ hoặc chia sẻ điều bạn đang lo lắng. Mình sẽ cùng bạn tìm bước tiếp theo.</p><div class="welcome-foot"><span>◇</span> Bạn đang trò chuyện với AI · Không cung cấp OTP hoặc mật khẩu</div></div>
+    </section>
+    <div class="composer-wrap"><form id="composer" class="composer"><label class="sr-only" for="message">Tin nhắn của bạn</label><textarea id="message" maxlength="4000" rows="1" placeholder="Nhắn cho trợ lý ví…"></textarea><div class="composer-bottom"><span>Không gửi thông tin xác thực</span><button id="send" type="submit" aria-label="Gửi tin nhắn">↑</button></div></form><p class="disclaimer">AI có thể nhầm lẫn. Tool chỉ tạo thông báo minh họa, không thực hiện thao tác trên ví.</p></div>
+  </main>
+  <aside id="activity" class="activity" hidden aria-label="Hoạt động và thông báo"><div class="activity-header"><div><span class="eyebrow">THEO DÕI XỬ LÝ</span><h2>Hoạt động</h2></div><button id="close-activity" class="icon-button" aria-label="Đóng thông báo">×</button></div><p class="activity-intro">Các đề xuất và thông báo gọi tool trong cuộc trò chuyện. Không có thao tác ví thật.</p><div id="notifications"><div class="empty-notifications">Chưa có thông báo.<br>Hoạt động sẽ xuất hiện khi trợ lý đề xuất hỗ trợ.</div></div></aside>
+  <dialog id="support-dialog" class="flow-dialog" aria-labelledby="support-title"><div class="dialog-top"><span class="eyebrow">LUÔN CÓ BƯỚC TIẾP THEO</span><button id="close-support" class="icon-button" aria-label="Đóng Trung tâm hỗ trợ">×</button></div><div class="dialog-icon">♡</div><h2 id="support-title">Trung tâm hỗ trợ</h2><p>Bạn có thể chuyển yêu cầu để minh hoạ luồng hỗ trợ của ví.</p><div class="flow-note"><strong>Thông tin được chuyển</strong><p>Loại yêu cầu và trạng thái mô phỏng. Không chuyển OTP hoặc mật khẩu. Chưa có nhân viên, IP hay lịch sử giao dịch thật trong bản mẫu.</p></div><p id="support-status" class="flow-status" role="status">Yêu cầu chỉ tạo thông báo trong ứng dụng, không liên hệ trung tâm thật.</p><div class="dialog-actions"><button id="transfer-support" class="flow-primary">Chuyển yêu cầu hỗ trợ</button><button id="back-to-chat" class="flow-secondary">Quay lại chat</button></div></dialog>
+  <dialog id="verification-dialog" class="flow-dialog" aria-labelledby="verification-title"><div class="dialog-top"><span class="eyebrow">BƯỚC XÁC THỰC RIÊNG BIỆT</span><button id="close-verification" class="icon-button" aria-label="Đóng màn hình xác thực">×</button></div><div class="face-frame" aria-hidden="true">◎</div><h2 id="verification-title">Xác thực khuôn mặt</h2><p id="verification-description">Bạn tự thực hiện xác thực tại màn hình bảo mật của ví, AI không nhập thay bạn.</p><div class="flow-note"><strong>Đây là màn hình mô phỏng</strong><p>Không mở camera, không nhập OTP hoặc thu dữ liệu khuôn mặt. Hoàn tất bản mẫu không xác minh danh tính và không nhả tiền.</p></div><p id="verification-status" class="flow-status" role="status"></p><div class="dialog-actions"><button id="continue-verification" class="flow-primary">Tiếp tục mô phỏng</button><button id="verification-support" class="flow-secondary">Đến Trung tâm hỗ trợ</button></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
